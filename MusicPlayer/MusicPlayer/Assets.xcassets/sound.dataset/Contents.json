@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "data" : [
     {
+      "filename" : "sound.mp3",
       "idiom" : "universal"
     }
   ],
