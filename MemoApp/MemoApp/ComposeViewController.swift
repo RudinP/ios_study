@@ -22,6 +22,8 @@ class ComposeViewController: UIViewController {
         let newMemo = Memo(content: memo)
         Memo.dummyMemoList.append(newMemo)
         
+        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -30,16 +32,9 @@ class ComposeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension ComposeViewController{
+    static let newMemoDidInsert = Notification.Name(rawValue: "newMemoDidInsert")
 }
