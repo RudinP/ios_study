@@ -10,6 +10,7 @@
 		4B69E4222AF60D7A00766E64 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69E4212AF60D7A00766E64 /* Model.swift */; };
 		4B69E4242AF612B800766E64 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69E4232AF612B800766E64 /* MemoListTableViewController.swift */; };
 		4B69E4262AF627EC00766E64 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69E4252AF627EC00766E64 /* ComposeViewController.swift */; };
+		4B69E4282AFC8B1700766E64 /* UIControllerView+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69E4272AFC8B1700766E64 /* UIControllerView+Alert.swift */; };
 		4BEA9D0F2AF5F5840007AD59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA9D0E2AF5F5840007AD59 /* AppDelegate.swift */; };
 		4BEA9D112AF5F5840007AD59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA9D102AF5F5840007AD59 /* SceneDelegate.swift */; };
 		4BEA9D162AF5F5840007AD59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BEA9D142AF5F5840007AD59 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		4B69E4212AF60D7A00766E64 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4B69E4232AF612B800766E64 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		4B69E4252AF627EC00766E64 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		4B69E4272AFC8B1700766E64 /* UIControllerView+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControllerView+Alert.swift"; sourceTree = "<group>"; };
 		4BEA9D0B2AF5F5840007AD59 /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BEA9D0E2AF5F5840007AD59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BEA9D102AF5F5840007AD59 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				4BEA9D1C2AF5F5840007AD59 /* Info.plist */,
 				4B69E4232AF612B800766E64 /* MemoListTableViewController.swift */,
 				4B69E4252AF627EC00766E64 /* ComposeViewController.swift */,
+				4B69E4272AFC8B1700766E64 /* UIControllerView+Alert.swift */,
 			);
 			path = MemoApp;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				4BEA9D0F2AF5F5840007AD59 /* AppDelegate.swift in Sources */,
 				4BEA9D112AF5F5840007AD59 /* SceneDelegate.swift in Sources */,
 				4B69E4242AF612B800766E64 /* MemoListTableViewController.swift in Sources */,
+				4B69E4282AFC8B1700766E64 /* UIControllerView+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
