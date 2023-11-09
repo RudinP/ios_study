@@ -87,7 +87,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="새 메모" id="5Xz-W8-bII">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3UO-FA-Lub"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="CLK-d0-dBD">
+                            <connections>
+                                <action selector="close:" destination="M6l-UB-Jai" id="5ex-FI-Fqg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="MZo-8v-j1p"/>
                     </navigationItem>
                 </viewController>
