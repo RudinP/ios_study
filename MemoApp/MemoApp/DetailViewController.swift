@@ -8,7 +8,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var memoTableView: UITableView!
+    
     var memo: Memo?
     let formatter: DateFormatter = {
         let f = DateFormatter()
@@ -19,23 +21,37 @@ class DetailViewController: UIViewController {
         return f
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination.children.first as? ComposeViewController {
+            vc.editTarget = memo
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var token: NSObjectProtocol?
+    
+    deinit{
+        if let token = token{
+            NotificationCenter.default.removeObserver(token)
+        }
     }
-    */
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidChange, object: nil, queue: OperationQueue.main, using: {[weak self] (noti) in
+            self?.memoTableView.reloadData()
+        })
+        
+        
+        /*
+         // MARK: - Navigation
+         
+         // In a storyboard-based application, you will often want to do a little preparation before navigation
+         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+         }
+         */
+        
+    }
 }
 
 extension DetailViewController: UITableViewDataSource{
