@@ -37,6 +37,18 @@ class ComposeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    var willShowToken: NSObjectProtocol?
+    var willHideToken: NSObjectProtocol?
+    
+    deinit{
+        if let token = willShowToken{
+            NotificationCenter.default.removeObserver(token)
+        }
+        if let token = willHideToken{
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,15 +61,56 @@ class ComposeViewController: UIViewController {
             memoTextView.text = ""
         }
         memoTextView.delegate = self
+        
+        willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: {[weak self] (noti) in
+            guard let strongSelf = self else {return}
+            
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+                //키보드 높이 가져옴
+                let height = frame.cgRectValue.height
+                
+                //메모텍스트뷰의 bottom 위치를 키보드의 높이 위치로 변경
+                var inset = strongSelf.memoTextView.contentInset
+                inset.bottom = height
+                
+                strongSelf.memoTextView.contentInset = inset
+                
+                //스크롤바에도 여백 추가
+                inset = strongSelf.memoTextView.verticalScrollIndicatorInsets
+                inset.bottom = height
+                
+                strongSelf.memoTextView.verticalScrollIndicatorInsets = inset
+            }
+        })
+        
+        willHideToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let strongSelf = self else {return}
+            
+            var inset = strongSelf.memoTextView.contentInset
+            inset.bottom = 0
+             
+            strongSelf.memoTextView.contentInset = inset
+            
+            inset = strongSelf.memoTextView.verticalScrollIndicatorInsets
+            inset.bottom = 0
+            
+            strongSelf.memoTextView.verticalScrollIndicatorInsets = inset
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        memoTextView.becomeFirstResponder()
+        
         navigationController?.presentationController?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        memoTextView.resignFirstResponder()
+        
         navigationController?.presentationController?.delegate = nil
     }
 }
