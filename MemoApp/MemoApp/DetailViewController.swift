@@ -40,6 +40,15 @@ class DetailViewController: UIViewController {
         
         let vc = UIActivityViewController(activityItems: [memo], applicationActivities: nil)
         
+        if let pc = vc.popoverPresentationController{
+            if #available(iOS 16.0, *) {
+                pc.sourceItem = sender as? any UIPopoverPresentationControllerSourceItem
+            } else {
+                // Fallback on earlier versions
+                pc.barButtonItem = sender as? UIBarButtonItem
+            }
+        }
+        
         present(vc, animated: true, completion: nil)
     }
     
