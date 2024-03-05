@@ -15,26 +15,32 @@ struct Event{
     let textColor: UIColor
     let icon: String
     
-    //지금으로부터 이벤트까지의 dday
-    var daysString: String? {
-        guard let day = date.days(from: Date.today) else { return nil }
+    init(date: Date, title: String, backgroundColor: UIColor, textColor: UIColor, icon: String) {
+        self.date = date
+        self.title = title
+        self.backgroundColor = backgroundColor
+        self.textColor = textColor
+        self.icon = icon
         
-        if day >= 0 {
-            return "D-\(abs(day))"
+        if let day = date.days(from: Date.today) {
+            daysString = if day >= 0 { "D-\(abs(day))" } else { "D+\(abs(day))"}
         } else {
-            return "D+\(abs(day))"
+            daysString = nil
         }
-    }
-    
-    var dateString: String?{
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from:date)
+        dateString = formatter.string(from:date)
+        
+        iconImage = UIImage(named: icon)
     }
     
-    var iconImage: UIImage? {
-        return UIImage(named: icon)
-    }
+    //지금으로부터 이벤트까지의 dday
+    let daysString: String?
+    
+    let dateString: String?
+    
+    let iconImage: UIImage?
 }
 
 var events = [
