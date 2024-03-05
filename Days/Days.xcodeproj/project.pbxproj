@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B7C8CE82B96EF4900DF8B87 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C8CE72B96EF4900DF8B87 /* EventTableViewCell.swift */; };
 		4B92893B2B9032050030F076 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B92893A2B9032050030F076 /* AppDelegate.swift */; };
 		4B92893D2B9032050030F076 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B92893C2B9032050030F076 /* SceneDelegate.swift */; };
 		4B92893F2B9032050030F076 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B92893E2B9032050030F076 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B7C8CE72B96EF4900DF8B87 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		4B9289372B9032050030F076 /* Days.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Days.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B92893A2B9032050030F076 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B92893C2B9032050030F076 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B7C8CE62B96EF2600DF8B87 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4B7C8CE72B96EF4900DF8B87 /* EventTableViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		4B92892E2B9032050030F076 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		4B9289392B9032050030F076 /* Days */ = {
 			isa = PBXGroup;
 			children = (
+				4B7C8CE62B96EF2600DF8B87 /* Cell */,
 				4B9289512B903E9C0030F076 /* Model */,
 				4B92894E2B903BAC0030F076 /* Util */,
 				4B92893A2B9032050030F076 /* AppDelegate.swift */,
@@ -160,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B7C8CE82B96EF4900DF8B87 /* EventTableViewCell.swift in Sources */,
 				4B92893F2B9032050030F076 /* ViewController.swift in Sources */,
 				4B9289502B903BBF0030F076 /* Date+Util.swift in Sources */,
 				4B92893B2B9032050030F076 /* AppDelegate.swift in Sources */,
