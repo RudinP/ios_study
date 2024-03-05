@@ -8,6 +8,44 @@
 import UIKit
 
 struct Event{
+    enum Category: String, CaseIterable{
+        case birthday
+        case business
+        case diet
+        case wedding
+        case travel
+        case exam
+        case love
+        case soccer
+        case baseball
+        case basketball
+        
+        var title: String {
+            switch self {
+            case .birthday:
+                return "생일"
+            case .business:
+                return "업무"
+            case .diet:
+                return "다이어트"
+            case .wedding:
+                return "결혼"
+            case .travel:
+                return "여행"
+            case .exam:
+                return "시험"
+            case .love:
+                return "연애"
+            case .soccer:
+                return "축구"
+            case .baseball:
+                return "야구"
+            case .basketball:
+                return "농구"
+            }
+        }
+    }
+    
     let date: Date
     let title: String
     
