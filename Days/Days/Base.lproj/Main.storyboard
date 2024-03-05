@@ -104,6 +104,7 @@
                                                     <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                     <constraints>
                                                         <constraint firstItem="T2Z-De-vs2" firstAttribute="top" secondItem="ua2-OE-PtF" secondAttribute="bottom" constant="20" id="KNz-7Z-khB"/>
+                                                        <constraint firstAttribute="height" constant="160" id="XgS-79-JOD"/>
                                                         <constraint firstItem="ua2-OE-PtF" firstAttribute="top" secondItem="DXC-EL-eKa" secondAttribute="top" constant="20" id="f51-jA-DHf"/>
                                                         <constraint firstItem="T2Z-De-vs2" firstAttribute="leading" secondItem="DXC-EL-eKa" secondAttribute="leading" constant="20" id="iZF-kY-yU7"/>
                                                         <constraint firstItem="ua2-OE-PtF" firstAttribute="leading" secondItem="DXC-EL-eKa" secondAttribute="leading" constant="20" id="qZr-i0-Y5u"/>
