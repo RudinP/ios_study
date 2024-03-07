@@ -9,6 +9,8 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
+    var data = ComposeData()
+    
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
     func setupLayout(){
@@ -26,6 +28,16 @@ class CategoryViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         categoryCollectionView.collectionViewLayout = layout
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UICollectionViewCell, let indexPath = categoryCollectionView.indexPath(for: cell) {
+            data.category = Event.Category.allCases[indexPath.item]
+            
+            if let vc = segue.destination as? DateSelectionViewController{
+                vc.data = data
+            }
+        }
     }
     
     override func viewDidLoad() {

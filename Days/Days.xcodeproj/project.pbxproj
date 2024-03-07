@@ -21,6 +21,7 @@
 		4B9289472B9032060030F076 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9289452B9032060030F076 /* LaunchScreen.storyboard */; };
 		4B9289502B903BBF0030F076 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B92894F2B903BBF0030F076 /* Date+Util.swift */; };
 		4B9289532B903EAF0030F076 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9289522B903EAF0030F076 /* Event.swift */; };
+		4BD5A0C62B9977AE00276255 /* ComposeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD5A0C52B9977AE00276255 /* ComposeData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4B9289482B9032060030F076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B92894F2B903BBF0030F076 /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
 		4B9289522B903EAF0030F076 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		4BD5A0C52B9977AE00276255 /* ComposeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9289522B903EAF0030F076 /* Event.swift */,
+				4BD5A0C52B9977AE00276255 /* ComposeData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				4B7C8CE82B96EF4900DF8B87 /* EventTableViewCell.swift in Sources */,
 				4B92893F2B9032050030F076 /* ViewController.swift in Sources */,
 				4B9289502B903BBF0030F076 /* Date+Util.swift in Sources */,
+				4BD5A0C62B9977AE00276255 /* ComposeData.swift in Sources */,
 				4B92893B2B9032050030F076 /* AppDelegate.swift in Sources */,
 				4B7C8CEC2B96F9C200DF8B87 /* CategoryViewController.swift in Sources */,
 				4B215C612B996ABF00CD5D09 /* ComposeViewController.swift in Sources */,

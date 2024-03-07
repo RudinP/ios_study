@@ -52,7 +52,13 @@ struct Event{
     let backgroundColor: UIColor
     let textColor: UIColor
     let icon: String
+    //지금으로부터 이벤트까지의 dday
+    let daysString: String?
     
+    let dateString: String?
+    
+    let iconImage: UIImage?
+
     init(date: Date, title: String, backgroundColor: UIColor, textColor: UIColor, icon: String) {
         self.date = date
         self.title = title
@@ -73,12 +79,9 @@ struct Event{
         iconImage = UIImage(named: icon)
     }
     
-    //지금으로부터 이벤트까지의 dday
-    let daysString: String?
-    
-    let dateString: String?
-    
-    let iconImage: UIImage?
+    init(data: ComposeData){
+        self.init(date: data.date!, title: data.title!, backgroundColor: data.backgroundColor!, textColor: data.textColor!, icon: data.category!.rawValue)
+    }
 }
 
 var events = [

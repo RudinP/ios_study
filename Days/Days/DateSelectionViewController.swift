@@ -9,6 +9,8 @@ import UIKit
 
 class DateSelectionViewController: UIViewController {
 
+    var data: ComposeData?
+    
     @IBOutlet weak var daysLabel: UILabel!
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -31,6 +33,13 @@ class DateSelectionViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         selectedDateLabel.text = formatter.string(from: sender.date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ComposeViewController{
+            data?.date = datePicker.date
+            vc.data = data
+        }
     }
     
     override func viewDidLoad() {
