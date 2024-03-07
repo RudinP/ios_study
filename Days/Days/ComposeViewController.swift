@@ -55,6 +55,29 @@ extension ComposeViewController: UICollectionViewDataSource{
         
         return cell
     }
-    
-    
+}
+
+extension ComposeViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == colors.count {
+            let colorPicker = UIColorPickerViewController()
+            colorPicker.title = collectionView == backgroundColorCollectionView ? "배경색" : "글자색"
+            colorPicker.supportsAlpha = false
+            colorPicker.delegate = self
+            
+            present(colorPicker, animated: true)
+        } else {
+            //마지막 셀이 아니라면 컬러를 선택한 것.
+            let target = colors[indexPath.item]
+        }
+    }
+}
+
+extension ComposeViewController: UIColorPickerViewControllerDelegate{
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        
+    }
+    func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
+        
+    }
 }

@@ -42,7 +42,7 @@ extension CategoryViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategoryCollectionViewCell.self), for: indexPath) as! CategoryCollectionViewCell
         
-        let category = Event.Category.allCases[indexPath.row]
+        let category = Event.Category.allCases[indexPath.item]
         cell.categoryImageView.image = UIImage(named: category.rawValue)
         cell.titleLabel.text = category.title
         
