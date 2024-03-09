@@ -10,4 +10,5 @@ import UIKit
 class ColorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var colorImageView: UIImageView!
     
+    @IBOutlet weak var checkmarkImageView: UIImageView!
 }
