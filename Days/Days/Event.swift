@@ -51,7 +51,7 @@ struct Event{
     
     let backgroundColor: UIColor
     let textColor: UIColor
-    let icon: String
+    let category: Category
     //지금으로부터 이벤트까지의 dday
     let daysString: String?
     
@@ -59,33 +59,43 @@ struct Event{
     
     let iconImage: UIImage?
 
-    init(date: Date, title: String, backgroundColor: UIColor, textColor: UIColor, icon: String) {
+    init(date: Date, title: String, backgroundColor: UIColor, textColor: UIColor, category: Category) {
         self.date = date
         self.title = title
         self.backgroundColor = backgroundColor
         self.textColor = textColor
-        self.icon = icon
+        self.category = category
         
-        if let day = date.days(from: Date.today) {
-            daysString = if day >= 0 { "D-\(abs(day))" } else { "D+\(abs(day))"}
-        } else {
-            daysString = nil
+        switch category{
+        case .birthday:
+            if let day = date.upcomingBirthDay.days(from: Date.today) {
+                daysString = if day >= 0 { "D-\(abs(day))" } else { "D+\(abs(day))"}
+            } else {
+                daysString = nil
+            }
+        default:
+            if let day = date.days(from: Date.today) {
+                daysString = if day >= 0 { "D-\(abs(day))" } else { "D+\(abs(day))"}
+            } else {
+                daysString = nil
+            }
         }
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         dateString = formatter.string(from:date)
         
-        iconImage = UIImage(named: icon)
+        iconImage = UIImage(named: category.rawValue)
     }
     
     init(data: ComposeData){
-        self.init(date: data.date!, title: data.title!, backgroundColor: data.backgroundColor!, textColor: data.textColor!, icon: data.category!.rawValue)
+        self.init(date: data.date!, title: data.title!, backgroundColor: data.backgroundColor!, textColor: data.textColor!, category: data.category!)
     }
 }
 
 var events = [
-    Event(date: Date(year: 2002, month: 5, day: 31), title: "한일 월드컵", backgroundColor: .systemBlue, textColor: .white, icon: "soccer"),
-    Event(date: Date(year: 2022, month: 11, day: 20), title: "카타르 월드컵", backgroundColor: .brown, textColor: .white, icon: "soccer"),
-    Event(date: Date(year: 2026, month: 6, day: 11), title: "북중미 월드컵", backgroundColor: .green, textColor: .black, icon: "soccer")
+    Event(date: Date(year: 2002, month: 5, day: 31), title: "한일 월드컵", backgroundColor: .systemBlue, textColor: .white, category: .soccer),
+    Event(date: Date(year: 2022, month: 11, day: 20), title: "카타르 월드컵", backgroundColor: .brown, textColor: .white, category: .soccer),
+    Event(date: Date(year: 2026, month: 6, day: 11), title: "북중미 월드컵", backgroundColor: .green, textColor: .black, category: .soccer),
+    Event(date: Date(year: 1999, month: 8, day: 11), title: "생일", backgroundColor: .yellow, textColor: .black, category: .birthday)
 ]

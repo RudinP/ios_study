@@ -31,4 +31,22 @@ extension Date{
         let calendar = Calendar.current
         return calendar.startOfDay(for: .now)
     }
+    
+    var upcomingBirthDay: Date{
+        let calendar = Calendar.current
+        let thisYear = calendar.component(.year, from: Self.today)
+        
+        var comps = calendar.dateComponents([.month,.day], from: self)
+        comps.year = thisYear
+        
+        let date = calendar.date(from: comps)
+        
+        if let date, date < Self.today{
+            comps.year = thisYear + 1
+            
+            return calendar.date(from: comps) ?? self
+        } else {
+            return date ?? self
+        }
+    }
 }
