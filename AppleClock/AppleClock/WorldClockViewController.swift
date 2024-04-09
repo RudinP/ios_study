@@ -8,22 +8,35 @@
 import UIKit
 
 class WorldClockViewController: UIViewController {
-
+    @IBOutlet weak var worldClockTableView: UITableView!
+    
+    var list = [
+        TimeZone(identifier: "Asia/Seoul")!,
+        TimeZone(identifier: "Europe/Paris")!
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        worldClockTableView.delegate = self
+        worldClockTableView.dataSource = self
+        
+        print(TimeZone.knownTimeZoneIdentifiers.count)
+        for tz in TimeZone.knownTimeZoneIdentifiers{
+            print(tz)
+        }
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = worldClockTableView.dequeueReusableCell(withIdentifier: String(describing: WorldClockTableViewCell.self), for: indexPath) as? WorldClockTableViewCell else { return  UITableViewCell() }
+        return cell
     }
-    */
-
+    
+    
 }
