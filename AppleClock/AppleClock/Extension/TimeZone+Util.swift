@@ -29,7 +29,7 @@ extension TimeZone{
         //TimeZone 프레임워크에는 city를 리턴하는 속성은 없다.
         let id = self.identifier
         let city = id.components(separatedBy: "/").last
-        return city
+        return city?.replacingOccurrences(of: "_", with: " ")
     }
     
     var timeOffset: String?{
