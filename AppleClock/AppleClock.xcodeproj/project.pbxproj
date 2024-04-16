@@ -14,6 +14,7 @@
 		4B5D9B8D2BC4D14000F1BD58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5D9B8B2BC4D14000F1BD58 /* LaunchScreen.storyboard */; };
 		4B5D9B952BC4D69000F1BD58 /* WorldClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D9B942BC4D69000F1BD58 /* WorldClockViewController.swift */; };
 		4B5D9B982BC4DE8C00F1BD58 /* WorldClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D9B972BC4DE8C00F1BD58 /* WorldClockTableViewCell.swift */; };
+		4B8C44E02BCE16FF002AEAD2 /* TimeZone+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C44DF2BCE16FF002AEAD2 /* TimeZone+Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4B5D9B8E2BC4D14000F1BD58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B5D9B942BC4D69000F1BD58 /* WorldClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockViewController.swift; sourceTree = "<group>"; };
 		4B5D9B972BC4DE8C00F1BD58 /* WorldClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockTableViewCell.swift; sourceTree = "<group>"; };
+		4B8C44DF2BCE16FF002AEAD2 /* TimeZone+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		4B5D9B7F2BC4D13E00F1BD58 /* AppleClock */ = {
 			isa = PBXGroup;
 			children = (
+				4B8C44DE2BCE16EA002AEAD2 /* Extension */,
 				4B5D9B962BC4DE7400F1BD58 /* cell */,
 				4B5D9B802BC4D13E00F1BD58 /* AppDelegate.swift */,
 				4B5D9B822BC4D13E00F1BD58 /* SceneDelegate.swift */,
@@ -76,6 +79,14 @@
 				4B5D9B972BC4DE8C00F1BD58 /* WorldClockTableViewCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		4B8C44DE2BCE16EA002AEAD2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4B8C44DF2BCE16FF002AEAD2 /* TimeZone+Util.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8C44E02BCE16FF002AEAD2 /* TimeZone+Util.swift in Sources */,
 				4B5D9B952BC4D69000F1BD58 /* WorldClockViewController.swift in Sources */,
 				4B5D9B812BC4D13E00F1BD58 /* AppDelegate.swift in Sources */,
 				4B5D9B832BC4D13E00F1BD58 /* SceneDelegate.swift in Sources */,
