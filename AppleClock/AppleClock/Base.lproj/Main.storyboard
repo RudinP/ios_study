@@ -120,6 +120,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="발견된 결과 없음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOn-fe-cwm">
+                                <rect key="frame" x="140.66666666666666" y="410.66666666666669" width="112" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n03-KV-1JD">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -151,9 +157,11 @@
                         <viewLayoutGuide key="safeArea" id="reK-mg-M3Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="BOn-fe-cwm" firstAttribute="centerY" secondItem="UAO-Eg-cpd" secondAttribute="centerY" id="EMO-0j-Syf"/>
                             <constraint firstItem="n03-KV-1JD" firstAttribute="trailing" secondItem="reK-mg-M3Z" secondAttribute="trailing" id="FYv-ah-fsd"/>
                             <constraint firstItem="n03-KV-1JD" firstAttribute="leading" secondItem="reK-mg-M3Z" secondAttribute="leading" id="JzG-oW-VK1"/>
                             <constraint firstItem="n03-KV-1JD" firstAttribute="bottom" secondItem="reK-mg-M3Z" secondAttribute="bottom" id="QK7-TC-q0c"/>
+                            <constraint firstItem="BOn-fe-cwm" firstAttribute="centerX" secondItem="UAO-Eg-cpd" secondAttribute="centerX" id="lqG-bv-HpA"/>
                             <constraint firstItem="n03-KV-1JD" firstAttribute="top" secondItem="UAO-Eg-cpd" secondAttribute="top" id="pKW-7K-wJQ"/>
                         </constraints>
                     </view>

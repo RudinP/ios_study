@@ -21,6 +21,7 @@ class CitySelectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var list = [Section]()
+    var filteredList = [Section]()
     
     func setupList(){
         var dict = [String: [TimeZone]]()
@@ -52,34 +53,82 @@ class CitySelectionViewController: UIViewController {
         }
         
         list.sort{$0.title < $1.title}
+        filteredList = list
+    }
+    
+    @objc func closeVC(){
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "검색"
+        searchBar.delegate = self
+        
+        let btn = UIButton(type: .custom)
+        btn.setTitle("취소", for: .normal)
+        btn.setTitleColor(.systemOrange, for: .normal)
+        btn.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
+        btn.widthAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
+        
+        let stack = UIStackView(arrangedSubviews: [searchBar, btn])
+        stack.axis = .horizontal
+        stack.spacing = 8
+        stack.widthAnchor.constraint(greaterThanOrEqualToConstant: view.bounds.width - 40).isActive = true
+        navigationItem.titleView = stack
         
         setupList()
         tableView.reloadData()
     }
 }
 
+extension CitySelectionViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //공백을 입력할 경우 별도로 서치 필요 X, 모든 결과를 보여주기
+        guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            filteredList = list
+            tableView.reloadData()
+            tableView.isHidden = filteredList.isEmpty
+            return
+        }
+        //검색어가 입력되었을 경우
+        //이전 검색 시 사용했을 경우를 위해 removeAll로 배열 초기화
+        filteredList.removeAll()
+        
+        for section in list{
+            let items = section.items.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
+            
+            //비어있지 않은 경우 == 검색 결과 존재
+            if !items.isEmpty {
+                filteredList.append(Section(title: section.title, items:  items))
+            }
+        }
+        
+        tableView.reloadData()
+        tableView.isHidden = filteredList.isEmpty
+    }
+}
+
 extension CitySelectionViewController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return list.count
+        return filteredList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list[section].items.count
+        return filteredList[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath)
-        cell.textLabel?.text = list[indexPath.section].items[indexPath.row].title
+        cell.textLabel?.text = filteredList[indexPath.section].items[indexPath.row].title
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return list[section].title
+        return filteredList[section].title
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -89,6 +138,6 @@ extension CitySelectionViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return list.firstIndex(where: {$0.title.uppercased() == title.uppercased()}) ?? 0
+        return filteredList.firstIndex(where: {$0.title.uppercased() == title.uppercased()}) ?? 0
     }
 }
