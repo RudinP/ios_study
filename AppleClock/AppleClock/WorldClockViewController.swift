@@ -18,8 +18,17 @@ class WorldClockViewController: UIViewController {
         TimeZone(identifier: "Asia/Vladivostok")!
     ]
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        worldClockTableView.setEditing(editing, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         worldClockTableView.delegate = self
         worldClockTableView.dataSource = self
         
@@ -49,12 +58,19 @@ extension WorldClockViewController: UITableViewDelegate, UITableViewDataSource{
         
         let target = list[indexPath.row]
         cell.timeLabel.text = target.currentTime
-        cell.timePeriodLabel.text = target.timePeriod
+        cell.timePeriodLabel.text = "  \(target.timePeriod ?? "")"
         cell.timeZoneLabel.text = target.city
         cell.timeOffsetLabel.text = target.timeOffset
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //editingStyle에는 insert, delete 두가지가 있음
+        if editingStyle == .delete {
+            list.remove(at: indexPath.row)
+            //reloadData도 가능하지만 애니메이션이 없어 어색하다
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
