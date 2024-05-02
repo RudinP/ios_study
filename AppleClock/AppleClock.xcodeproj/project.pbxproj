@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B1122312BE32D3800A2E577 /* Date+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1122302BE32D3800A2E577 /* Date+Util.swift */; };
 		4B5D9B812BC4D13E00F1BD58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D9B802BC4D13E00F1BD58 /* AppDelegate.swift */; };
 		4B5D9B832BC4D13E00F1BD58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D9B822BC4D13E00F1BD58 /* SceneDelegate.swift */; };
 		4B5D9B882BC4D13E00F1BD58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5D9B862BC4D13E00F1BD58 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B1122302BE32D3800A2E577 /* Date+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Util.swift"; sourceTree = "<group>"; };
 		4B5D9B7D2BC4D13E00F1BD58 /* AppleClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B5D9B802BC4D13E00F1BD58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B5D9B822BC4D13E00F1BD58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				4B8C44DF2BCE16FF002AEAD2 /* TimeZone+Util.swift */,
 				4B8C44E32BCE232F002AEAD2 /* String+Hangeul.swift */,
+				4B1122302BE32D3800A2E577 /* Date+Util.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B8C44E02BCE16FF002AEAD2 /* TimeZone+Util.swift in Sources */,
+				4B1122312BE32D3800A2E577 /* Date+Util.swift in Sources */,
 				4B5D9B952BC4D69000F1BD58 /* WorldClockViewController.swift in Sources */,
 				4B5D9B812BC4D13E00F1BD58 /* AppDelegate.swift in Sources */,
 				4B8C44E42BCE232F002AEAD2 /* String+Hangeul.swift in Sources */,
