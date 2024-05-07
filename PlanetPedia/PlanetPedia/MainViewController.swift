@@ -33,3 +33,14 @@ extension MainViewController: UICollectionViewDataSource{
     }
 }
 
+extension MainViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return .zero }
+        
+        //소수점때문에 뷰가 망가지는 경우 방지
+        let width = Int((collectionView.bounds.width - (flowLayout.minimumInteritemSpacing + flowLayout.sectionInset.left + flowLayout.sectionInset.right)) / 2)
+        
+        return CGSize(width: width, height: width)
+    }
+}
+
