@@ -15,6 +15,7 @@
 		4B11225A2BE9BC6000A2E577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1122582BE9BC6000A2E577 /* LaunchScreen.storyboard */; };
 		4B1122632BE9BD6100A2E577 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1122622BE9BD6100A2E577 /* Planet.swift */; };
 		4B1122662BE9BFC500A2E577 /* PlanetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1122652BE9BFC500A2E577 /* PlanetCollectionViewCell.swift */; };
+		4B8D3EF02C2294FA00A344D1 /* PlanetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D3EEF2C2294FA00A344D1 /* PlanetDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4B11225B2BE9BC6000A2E577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B1122622BE9BD6100A2E577 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		4B1122652BE9BFC500A2E577 /* PlanetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetCollectionViewCell.swift; sourceTree = "<group>"; };
+		4B8D3EEF2C2294FA00A344D1 /* PlanetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				4B11224D2BE9BC5F00A2E577 /* AppDelegate.swift */,
 				4B11224F2BE9BC5F00A2E577 /* SceneDelegate.swift */,
 				4B1122512BE9BC5F00A2E577 /* MainViewController.swift */,
+				4B8D3EEF2C2294FA00A344D1 /* PlanetDetailViewController.swift */,
 				4B1122532BE9BC5F00A2E577 /* Main.storyboard */,
 				4B1122562BE9BC6000A2E577 /* Assets.xcassets */,
 				4B1122582BE9BC6000A2E577 /* LaunchScreen.storyboard */,
@@ -164,6 +167,7 @@
 				4B11224E2BE9BC5F00A2E577 /* AppDelegate.swift in Sources */,
 				4B1122662BE9BFC500A2E577 /* PlanetCollectionViewCell.swift in Sources */,
 				4B1122502BE9BC5F00A2E577 /* SceneDelegate.swift in Sources */,
+				4B8D3EF02C2294FA00A344D1 /* PlanetDetailViewController.swift in Sources */,
 				4B1122632BE9BD6100A2E577 /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

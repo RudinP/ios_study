@@ -10,6 +10,16 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var planetCollectionView: UICollectionView!
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cell = sender as? UICollectionViewCell, let indexPath = planetCollectionView.indexPath(for: cell){
+            let selected = solarSystemPlanets[indexPath.item]
+            
+            if let vc = segue.destination as? PlanetDetailViewController{
+                vc.planet = selected
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
