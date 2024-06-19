@@ -9,16 +9,26 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var planetCollectionView: UICollectionView!
+        
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let cell = sender as? UICollectionViewCell, let indexPath = planetCollectionView.indexPath(for: cell){
-            let selected = solarSystemPlanets[indexPath.item]
-            
-            if let vc = segue.destination as? PlanetDetailViewController{
-                vc.planet = selected
-            }
+    @IBSegueAction func makeDetailVC(_ coder: NSCoder, sender: Any?) -> PlanetDetailViewController? {
+        guard let cell = sender as? UICollectionViewCell, let indexPath = planetCollectionView.indexPath(for: cell) else {
+            return nil //segue가 vc를 자동으로 만듦. 즉, PlanetDetailViewController의 required init?을 호출하고 크래시가 발생할 것.
         }
+        
+        let selected = solarSystemPlanets[indexPath.item]
+        return PlanetDetailViewController(planet: selected, coder: coder)
     }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let cell = sender as? UICollectionViewCell, let indexPath = planetCollectionView.indexPath(for: cell){
+//            let selected = solarSystemPlanets[indexPath.item]
+//            
+//            if let vc = segue.destination as? PlanetDetailViewController{
+//                //의존성 주입
+//                vc.planet = selected
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
