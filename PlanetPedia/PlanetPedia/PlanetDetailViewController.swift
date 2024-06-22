@@ -24,12 +24,63 @@ class PlanetDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupLayout(){
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, environment in
+            switch sectionIndex{
+            case 1:
+                //한 줄에 두 셀을 표시하고자 하므로 0.5
+                var size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .estimated(130))
+                //아이템 크기 설정
+                var item = NSCollectionLayoutItem(layoutSize: size)
+                //그룹은 섹션 너비 전체를 채우도록
+                size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(130))
+                //그룹 설정. 나란히 배치하고자 하므로 horizontal
+                //첫번째 2개 셀 그룹
+                var group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+                //그룹 내 inset 설정
+                //.fixed = 고정값 지정, .flexible = 최소 여백 지정. 현재 상황에서는 비율로 너비가 지정되므로 오차발생 가능성이 있기 때문에 flexible이 바람직함.
+                group.interItemSpacing = .flexible(20)
+                //섹션 그룹 설정
+                //두번째 1개 셀 그룹
+                size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(130))
+                item = NSCollectionLayoutItem(layoutSize: size)
+                
+                group = NSCollectionLayoutGroup.vertical(layoutSize: size, subitems: [group, item])
+                //위 아래 inset 추가
+                group.interItemSpacing = .fixed(20)
+                
+                let section = NSCollectionLayoutSection(group: group)
+                //inset 설정
+                section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+                section.interGroupSpacing = 20
+
+                return section
+            default:
+                //너비는 가능한 너비 전체로 채우고자 하면 비율적으로 1
+                let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
+                //아이템 크기 설정
+                let item = NSCollectionLayoutItem(layoutSize: size)
+                //그룹 설정
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: size, subitems: [item])
+                //섹션 그룹 설정
+                let section = NSCollectionLayoutSection(group: group)
+                //inset 설정
+                section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+                section.interGroupSpacing = 20
+
+                return section
+            }
+        }
+        detailCollectionView.collectionViewLayout = layout
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let img = UIImage(named: planet.englishName.lowercased())
         backgroundImageView.image = img
         
+        setupLayout()
     }
 
 }
