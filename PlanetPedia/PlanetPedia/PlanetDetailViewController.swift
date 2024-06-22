@@ -115,9 +115,28 @@ extension PlanetDetailViewController: UICollectionViewDataSource{
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PlanetInfoCollectionViewCell.self), for: indexPath) as! PlanetInfoCollectionViewCell
             
-            cell.titleLabel.text = "거리"
-            cell.valueLabel.text = "1만"
-            cell.unitLabel.text = "km"
+            switch indexPath.item {
+            //행성의 크기
+            case 0:
+                cell.titleImageView.image = UIImage(systemName: "ruler")
+                cell.titleLabel.text = "크기"
+                cell.valueLabel.text = planet.sizeString
+                cell.unitLabel.text = "km"
+            //행성의 공전 주기
+            case 1:
+                cell.titleImageView.image = UIImage(systemName: "arrow.circlepath")
+                cell.titleLabel.text = "공전 주기"
+                cell.valueLabel.text = planet.orbitalPeriodString
+                cell.unitLabel.text = planet.orbitalPeriod > 365 ? "년" : "일"
+            //지구와의 거리
+            case 2:
+                cell.titleImageView.image = UIImage(systemName: "airplane")
+                cell.titleLabel.text = "지구와의 거리"
+                cell.valueLabel.text = planet.distanceString
+                cell.unitLabel.text = "km"
+            default:
+                break
+            }
             
             return cell
         case 2:

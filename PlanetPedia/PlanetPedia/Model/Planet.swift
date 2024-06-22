@@ -1,5 +1,7 @@
 import UIKit
 
+fileprivate let numberFormatter = NumberFormatter()
+
 struct Planet {
     struct Satellite {
         let koreanName: String
@@ -12,8 +14,42 @@ struct Planet {
     let koreanName: String
     let englishName: String
     let size: Double // 지름 기준 (km)
+    
+    var sizeString: String?{
+        numberFormatter.numberStyle = .decimal
+        //최소 자릿수
+        numberFormatter.minimumFractionDigits = 0
+        //최대 자릿수. 이렇게 하면 소수점 한자리까지만 표시됨.
+        numberFormatter.maximumFractionDigits = 1
+        
+        return numberFormatter.string(for: size)
+    }
+    
     let orbitalPeriod: Double
+    
+    var orbitalPeriodString: String?{
+        //1년 이하면 일수, 이상이면 년수
+        let value = orbitalPeriod > 365 ? orbitalPeriod / 365 : orbitalPeriod
+        
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.minimumFractionDigits = 0
+        numberFormatter.maximumFractionDigits = 2
+        
+        return numberFormatter.string(for: value)
+    }
+
     let distanceFromEarthKM: Double // km 기준
+    
+    var distanceString: String?{
+        numberFormatter.numberStyle = .decimal
+        //최소 자릿수
+        numberFormatter.minimumFractionDigits = 0
+        //최대 자릿수. 이렇게 하면 소수점 한자리까지만 표시됨.
+        numberFormatter.maximumFractionDigits = 1
+        
+        return numberFormatter.string(for: distanceFromEarthKM)
+    }
+    
     let description: String
     let satellites: [Satellite]
 }
