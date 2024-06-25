@@ -92,12 +92,16 @@ class PlanetDetailViewController: UIViewController {
         detailCollectionView.collectionViewLayout = layout
     }
     
+    var initialOffsetY = CGFloat(0)
+    
     func adjustContentInset(){
         let indexPath = IndexPath(item: 0, section: 0)
         if let first = detailCollectionView.cellForItem(at: indexPath){
             let topInset = detailCollectionView.frame.height - first.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom - 20//section inset
             detailCollectionView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
             detailCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
+            
+            initialOffsetY = detailCollectionView.contentOffset.y
         }
     }
     
@@ -180,6 +184,25 @@ extension PlanetDetailViewController: UICollectionViewDataSource{
             return cell
         default:
             fatalError("check section count")
+        }
+    }
+}
+
+extension PlanetDetailViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(#function, scrollView.contentOffset.y)
+        
+        let y = scrollView.contentOffset.y
+        let half = scrollView.bounds.size.height / 2
+        
+        //스크롤 절반까지 서서히 dimView의 알파가 0.4가 되도록 하고 그 이상은 0.4 유지.
+        if y <= initialOffsetY{
+            dimView.alpha = 0.0
+        } else if y <= -half{ //음수값이라 - 붙여서 계산해야 함.
+            let progress = (initialOffsetY - y) / (initialOffsetY + half)
+            dimView.alpha = progress * 0.4
+        } else {
+            dimView.alpha = 0.4
         }
     }
 }
