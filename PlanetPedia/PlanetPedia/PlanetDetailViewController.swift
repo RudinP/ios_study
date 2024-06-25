@@ -116,7 +116,9 @@ class PlanetDetailViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        adjustContentInset()
+        DispatchQueue.main.async {
+            self.adjustContentInset()
+        }
     }
 }
 
