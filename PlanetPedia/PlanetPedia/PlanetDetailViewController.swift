@@ -10,6 +10,7 @@ import UIKit
 class PlanetDetailViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var detailCollectionView: UICollectionView!
+    @IBOutlet weak var dimView: UIView!
     
     private let planet: Planet
     
@@ -91,6 +92,15 @@ class PlanetDetailViewController: UIViewController {
         detailCollectionView.collectionViewLayout = layout
     }
     
+    func adjustContentInset(){
+        let indexPath = IndexPath(item: 0, section: 0)
+        if let first = detailCollectionView.cellForItem(at: indexPath){
+            let topInset = detailCollectionView.frame.height - first.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom - 20//section inset
+            detailCollectionView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: 0, right: 0)
+            detailCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -100,6 +110,10 @@ class PlanetDetailViewController: UIViewController {
         setupLayout()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustContentInset()
+    }
 }
 
 extension PlanetDetailViewController: UICollectionViewDataSource{

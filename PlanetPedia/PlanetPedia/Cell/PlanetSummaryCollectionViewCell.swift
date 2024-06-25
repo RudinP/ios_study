@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanetSummaryCollectionViewCell: RoundedCollectionViewCell {
+class PlanetSummaryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var korNameLabel: UILabel!
     @IBOutlet weak var engNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

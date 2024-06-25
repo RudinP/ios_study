@@ -97,6 +97,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mars" translatesAutoresizingMaskIntoConstraints="NO" id="2kY-Mu-8Vq">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfJ-Jy-EO5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QMq-Yb-drH">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -286,10 +290,14 @@
                         <viewLayoutGuide key="safeArea" id="d3l-Yn-8N1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="SfJ-Jy-EO5" firstAttribute="bottom" secondItem="2kY-Mu-8Vq" secondAttribute="bottom" id="2JF-wC-j7C"/>
+                            <constraint firstItem="SfJ-Jy-EO5" firstAttribute="top" secondItem="2kY-Mu-8Vq" secondAttribute="top" id="5oM-K7-08M"/>
                             <constraint firstItem="QMq-Yb-drH" firstAttribute="leading" secondItem="d3l-Yn-8N1" secondAttribute="leading" id="FNp-TX-J6h"/>
                             <constraint firstAttribute="bottom" secondItem="QMq-Yb-drH" secondAttribute="bottom" id="KWU-J2-yHV"/>
+                            <constraint firstItem="SfJ-Jy-EO5" firstAttribute="leading" secondItem="2kY-Mu-8Vq" secondAttribute="leading" id="TCW-Me-NCS"/>
                             <constraint firstItem="2kY-Mu-8Vq" firstAttribute="leading" secondItem="d3l-Yn-8N1" secondAttribute="leading" id="UKf-12-AAF"/>
                             <constraint firstItem="QMq-Yb-drH" firstAttribute="trailing" secondItem="d3l-Yn-8N1" secondAttribute="trailing" id="WgW-gc-ZFb"/>
+                            <constraint firstItem="SfJ-Jy-EO5" firstAttribute="trailing" secondItem="2kY-Mu-8Vq" secondAttribute="trailing" id="bO4-Kx-0FC"/>
                             <constraint firstAttribute="bottom" secondItem="2kY-Mu-8Vq" secondAttribute="bottom" id="eOF-gc-2v3"/>
                             <constraint firstItem="2kY-Mu-8Vq" firstAttribute="top" secondItem="xIN-cr-Y7a" secondAttribute="top" id="frm-gx-4EL"/>
                             <constraint firstItem="QMq-Yb-drH" firstAttribute="top" secondItem="xIN-cr-Y7a" secondAttribute="top" id="jrB-dt-a70"/>
@@ -300,6 +308,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="2kY-Mu-8Vq" id="uli-Ye-LEu"/>
                         <outlet property="detailCollectionView" destination="QMq-Yb-drH" id="DAI-Qn-WQB"/>
+                        <outlet property="dimView" destination="SfJ-Jy-EO5" id="RI5-wI-v69"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vg0-dP-Juf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
