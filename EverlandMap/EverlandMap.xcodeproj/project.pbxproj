@@ -13,6 +13,9 @@
 		4B4C3BDF2C2D06DC00344E01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B4C3BDD2C2D06DC00344E01 /* Main.storyboard */; };
 		4B4C3BE12C2D06DD00344E01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B4C3BE02C2D06DD00344E01 /* Assets.xcassets */; };
 		4B4C3BE42C2D06DD00344E01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B4C3BE22C2D06DD00344E01 /* LaunchScreen.storyboard */; };
+		4B4C3BF02C2D146000344E01 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4C3BEF2C2D146000344E01 /* Property.swift */; };
+		4B4C3BF22C2D14B900344E01 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4C3BF12C2D14B900344E01 /* Category.swift */; };
+		4B4C3BF42C2D181E00344E01 /* EverlandAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4C3BF32C2D181E00344E01 /* EverlandAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		4B4C3BE52C2D06DD00344E01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B4C3BEC2C2D074700344E01 /* 강남역.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "강남역.gpx"; sourceTree = "<group>"; };
 		4B4C3BED2C2D076E00344E01 /* 에버랜드.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "에버랜드.gpx"; sourceTree = "<group>"; };
+		4B4C3BEF2C2D146000344E01 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		4B4C3BF12C2D14B900344E01 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		4B4C3BF32C2D181E00344E01 /* EverlandAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverlandAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,7 @@
 		4B4C3BD62C2D06DC00344E01 /* EverlandMap */ = {
 			isa = PBXGroup;
 			children = (
+				4B4C3BEE2C2D145300344E01 /* Model */,
 				4B4C3BEB2C2D072E00344E01 /* Location */,
 				4B4C3BD72C2D06DC00344E01 /* AppDelegate.swift */,
 				4B4C3BD92C2D06DC00344E01 /* SceneDelegate.swift */,
@@ -77,6 +84,16 @@
 				4B4C3BED2C2D076E00344E01 /* 에버랜드.gpx */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		4B4C3BEE2C2D145300344E01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B4C3BEF2C2D146000344E01 /* Property.swift */,
+				4B4C3BF12C2D14B900344E01 /* Category.swift */,
+				4B4C3BF32C2D181E00344E01 /* EverlandAnnotation.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +168,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B4C3BDC2C2D06DC00344E01 /* ViewController.swift in Sources */,
+				4B4C3BF42C2D181E00344E01 /* EverlandAnnotation.swift in Sources */,
+				4B4C3BF22C2D14B900344E01 /* Category.swift in Sources */,
 				4B4C3BD82C2D06DC00344E01 /* AppDelegate.swift in Sources */,
+				4B4C3BF02C2D146000344E01 /* Property.swift in Sources */,
 				4B4C3BDA2C2D06DC00344E01 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
