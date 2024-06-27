@@ -26,46 +26,61 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ig-VN-hVY">
-                                <rect key="frame" x="258" y="59" width="115" height="346"/>
+                                <rect key="frame" x="258" y="58.999999999999972" width="115" height="404.33333333333326"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRO-3l-eca">
-                                        <rect key="frame" x="0.0" y="0.0" width="115" height="346"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="115" height="404.33333333333331"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CwU-CB-EMR">
-                                            <rect key="frame" x="0.0" y="0.0" width="115" height="346"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="115" height="404"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="regular"/>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-4r-cel">
-                                        <rect key="frame" x="20" y="20" width="75" height="306"/>
+                                        <rect key="frame" x="20" y="20" width="75" height="364.33333333333331"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4d-L2-YqN">
-                                                <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="46"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="attraction"/>
+                                                <connections>
+                                                    <action selector="showAttractions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8gP-rI-sUg"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k21-GB-EUl">
-                                                <rect key="frame" x="0.0" y="54.333333333333343" width="75" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="66" width="75" height="46"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="performance"/>
+                                                <connections>
+                                                    <action selector="showPerformance:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ygH-iG-lAp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjx-s7-SLw">
-                                                <rect key="frame" x="0.0" y="108.66666666666666" width="75" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="132" width="75" height="46"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="amenity"/>
+                                                <connections>
+                                                    <action selector="showAmenities:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nS3-Ar-XYq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1k-i9-RKn">
-                                                <rect key="frame" x="0.0" y="163" width="75" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="198" width="75" height="46"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="giftshop"/>
+                                                <connections>
+                                                    <action selector="showGiftshops:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Wl-Sp-FNx"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9v7-at-UIf">
-                                                <rect key="frame" x="0.0" y="217.33333333333331" width="75" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="264" width="75" height="46"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="restaurant"/>
+                                                <connections>
+                                                    <action selector="showRestaurants:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9yn-c5-Pwc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZk-3H-52w">
-                                                <rect key="frame" x="0.0" y="271.66666666666669" width="75" height="34.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="330" width="75" height="34.333333333333314"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                             </button>
@@ -106,6 +121,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="amenity" width="32" height="32"/>
+        <image name="attraction" width="32" height="32"/>
+        <image name="giftshop" width="32" height="32"/>
+        <image name="performance" width="32" height="32"/>
+        <image name="restaurant" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
