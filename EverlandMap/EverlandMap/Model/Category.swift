@@ -21,7 +21,8 @@ enum Category: String{
     case locker
     case ticketing
     case babyfeeding
-    case mssingchild
+    case missingchild
     case publicphone
     case smoking
+    case charge
 }

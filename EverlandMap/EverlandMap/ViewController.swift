@@ -13,6 +13,7 @@ extension String: Error {}
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var menuContainerView: UIView!
+    @IBOutlet weak var facilityButton: UIButton!
     
     var geoJsonObjects = [MKGeoJSONObject]()
     
@@ -86,6 +87,20 @@ class ViewController: UIViewController {
             geoJsonObjects = try await fetchMap()
             
         }
+        
+        let list = [Category.aed, .restroom, .firstaid, .locker, .atm, .ticketing, .babyfeeding, .missingchild, .charge, .publicphone, .smoking]
+        
+        var actions = [UIAction]()
+        for category in list{
+            let action = UIAction(title: category.rawValue.capitalized, image: UIImage(named: category.rawValue)) { _ in
+                self.show(category: category)
+            }
+            actions.append(action)
+        }
+        
+        let menu = UIMenu(children: actions)
+        facilityButton.menu = menu
+        facilityButton.showsMenuAsPrimaryAction = true
     }
 }
 
@@ -94,14 +109,24 @@ extension ViewController: MKMapViewDelegate{
         //사용자의 현재 위치를 표시하는 경우 기본뷰를 표시하도록 nil 리턴
         guard !(annotation is MKUserLocation) else {return nil}
         //어노테이션이 포인트 어노테이션이면 마커 뷰를 표시
+        //pointannotation에는 title, subtitle, 좌표 세 가지가 저장된다.
+        //따라서 우리가 설정한 카테고리에 접근하려면 커스텀 어노테이션을 만들고 어노테이션에 프로퍼티를 함께 저장해야 함.
         if let everlandAnnotation = annotation as? EverlandAnnotation {
             let marker = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation) as! MKMarkerAnnotationView
             //마커의 그리프이미지 변경
             marker.glyphImage = everlandAnnotation.image
+            marker.markerTintColor = nil
+            marker.glyphTintColor = nil
             //마커 추가 시 바운스애니메이션 추가
             marker.animatesWhenAdded = true
-            //pointannotation에는 title, subtitle, 좌표 세 가지가 저장된다.
-            //따라서 우리가 설정한 카테고리에 접근하려면 커스텀 어노테이션을 만들고 어노테이션에 프로퍼티를 함께 저장해야 함.
+            if everlandAnnotation.category == .restroom{
+                marker.markerTintColor = .black
+                if everlandAnnotation.properties.accessibleToDisabled ?? false{
+                    marker.glyphTintColor = .systemGreen
+                } else {
+                    marker.glyphTintColor = .white
+                }
+            }
             return marker
         }
         
