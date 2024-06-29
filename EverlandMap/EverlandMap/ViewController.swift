@@ -74,6 +74,23 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func addOverlay(_ sender: Any){
+        mapView.removeOverlays(mapView.overlays)
+        
+        for obj in geoJsonObjects {
+            guard let feature = obj as? MKGeoJSONFeature else {continue}
+            let jsonDecoder = JSONDecoder()
+            
+            guard let pdata = feature.properties,
+                  let properties = try? jsonDecoder.decode(Property.self, from: pdata) else {continue}
+            
+            if let section = feature.geometry.first as? MKPolygon {
+                section.title = properties.name
+                mapView.addOverlay(section)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuContainerView.layer.cornerRadius = 20
@@ -101,10 +118,46 @@ class ViewController: UIViewController {
         let menu = UIMenu(children: actions)
         facilityButton.menu = menu
         facilityButton.showsMenuAsPrimaryAction = true
+        
     }
 }
 
 extension ViewController: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        switch overlay{
+        case is MKPolyline:
+            let r = MKPolylineRenderer(overlay: overlay)
+            r.strokeColor = .systemRed //색
+            r.lineWidth = 10 //라인 두께
+            return r
+        case is MKCircle:
+            let r = MKCircleRenderer(overlay: overlay)
+            r.strokeColor = .blue
+            r.lineWidth = 10
+            return r
+        case is MKPolygon:
+            let r = MKPolygonRenderer(overlay: overlay)
+            switch overlay.title {
+            case "유러피안 어드벤처":
+                r.fillColor = .systemGreen
+            case "매직랜드":
+                r.fillColor = .systemRed
+            case "아메리칸 어드벤처":
+                r.fillColor = .systemBlue
+            case "글로벌페어":
+                r.fillColor = .systemPurple
+            case "주토피아":
+                r.fillColor = .systemOrange
+            default:
+                r.fillColor = .systemYellow
+            }
+            
+            r.alpha = 0.2
+            return r
+        default:
+            return MKOverlayRenderer()
+        }
+    }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         //사용자의 현재 위치를 표시하는 경우 기본뷰를 표시하도록 nil 리턴
         guard !(annotation is MKUserLocation) else {return nil}
@@ -133,3 +186,4 @@ extension ViewController: MKMapViewDelegate{
         return nil
     }
 }
+

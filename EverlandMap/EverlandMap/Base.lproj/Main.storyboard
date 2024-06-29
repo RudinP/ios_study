@@ -26,18 +26,18 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ig-VN-hVY">
-                                <rect key="frame" x="277" y="58.999999999999972" width="96" height="404.33333333333326"/>
+                                <rect key="frame" x="277" y="59.000000000000028" width="96" height="458.66666666666674"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRO-3l-eca">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="404.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="458.66666666666669"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CwU-CB-EMR">
-                                            <rect key="frame" x="0.0" y="0.0" width="96" height="404.33333333333331"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="458.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="regular"/>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-4r-cel">
-                                        <rect key="frame" x="20" y="20" width="56" height="364.33333333333331"/>
+                                        <rect key="frame" x="20" y="20" width="56" height="418.66666666666669"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4d-L2-YqN">
                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="46"/>
@@ -84,6 +84,14 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-CZ-vPf">
+                                                <rect key="frame" x="0.0" y="384.33333333333331" width="56" height="34.333333333333314"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="square.2.layers.3d" catalog="system"/>
+                                                <connections>
+                                                    <action selector="addOverlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zxb-Bg-lz0"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -128,6 +136,7 @@
         <image name="performance" width="32" height="32"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="restaurant" width="32" height="32"/>
+        <image name="square.2.layers.3d" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
