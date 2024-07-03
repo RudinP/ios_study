@@ -75,6 +75,7 @@ class ViewController: UIViewController {
         request.destination = destMapItem
         //경로를 이동하는 수단 설정
         request.transportType = .automobile
+        request.requestsAlternateRoutes = true
         
         let directions = MKDirections(request: request)
         directions.calculate { response, error in //응답 객체, 에러
@@ -90,6 +91,14 @@ class ViewController: UIViewController {
             
             let region = MKCoordinateRegion(route.polyline.boundingMapRect)
             self.mapView.setRegion(region, animated: true)
+            
+            self.performSegue(withIdentifier: "routeSegue", sender: response.routes)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? RoutesViewController{
+            vc.routes = sender as? [MKRoute] ?? []
         }
     }
     
