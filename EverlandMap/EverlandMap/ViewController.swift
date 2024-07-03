@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 extension String: Error {}
 
@@ -16,6 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var facilityButton: UIButton!
     
     var geoJsonObjects = [MKGeoJSONObject]()
+    
+    lazy var locationManager: CLLocationManager = { [weak self] in
+        let m = CLLocationManager()
+        m.delegate = self
+        return m
+    }()
     
     func fetchMap() async throws -> [MKGeoJSONObject] {
         guard let url = URL(string: "https:kxapi.azurewebsites.net/geojson?apiKey=Vlma2ThXYk968FCuLLEy") else {
@@ -50,6 +57,43 @@ class ViewController: UIViewController {
     @IBAction func showRestaurants(_ sender: Any) {
         show(category: .restaurant)
     }
+    @IBAction func showRoute(_ sender: Any) {
+        let start = mapView.userLocation.coordinate
+        let dest = CLLocationCoordinate2D(latitude: 37.294259, longitude: 127.2030509) //선택한 어노테이션
+        
+        //지점의 placemark 생성
+        let startPlacemark = MKPlacemark(coordinate: start)
+        let destPlacemark = MKPlacemark(coordinate: dest)
+        
+        //mapItem 생성
+        let startMapItem = MKMapItem(placemark: startPlacemark)
+        let destMapItem = MKMapItem(placemark: destPlacemark)
+        
+        //경로는 애플 서버로 요청을 보내서 생성한다.
+        let request = MKDirections.Request()
+        request.source = startMapItem
+        request.destination = destMapItem
+        //경로를 이동하는 수단 설정
+        request.transportType = .automobile
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { response, error in //응답 객체, 에러
+            guard let response else {
+                if let error {
+                    print(error)
+                }
+                return
+            }
+            
+            let route = response.routes[0] //routes는 배열로, 여러 경로가 나올 수 있기 때문.
+            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+            
+            let region = MKCoordinateRegion(route.polyline.boundingMapRect)
+            self.mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    
     func show(category: Category){
         //어노테이션 삭제 방법
         mapView.removeAnnotations(mapView.annotations)
@@ -93,6 +137,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        _ = locationManager //lazy여서
+        
         menuContainerView.layer.cornerRadius = 20
         menuContainerView.clipsToBounds = true
         
@@ -122,7 +169,23 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: CLLocationManagerDelegate{
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        default:
+            break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+}
+
 extension ViewController: MKMapViewDelegate{
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         switch overlay{
         case is MKPolyline:

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRu-ux-PYc">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRu-ux-PYc">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                                 <connections>
@@ -26,18 +26,18 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ig-VN-hVY">
-                                <rect key="frame" x="277" y="59.000000000000028" width="96" height="458.66666666666674"/>
+                                <rect key="frame" x="277" y="59" width="96" height="513"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRO-3l-eca">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="458.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="513"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CwU-CB-EMR">
-                                            <rect key="frame" x="0.0" y="0.0" width="96" height="458.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="513"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </view>
                                         <blurEffect style="regular"/>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rCk-4r-cel">
-                                        <rect key="frame" x="20" y="20" width="56" height="418.66666666666669"/>
+                                        <rect key="frame" x="20" y="20" width="56" height="473"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4d-L2-YqN">
                                                 <rect key="frame" x="0.0" y="0.0" width="56" height="46"/>
@@ -92,6 +92,14 @@
                                                     <action selector="addOverlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zxb-Bg-lz0"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XB0-DE-tXe">
+                                                <rect key="frame" x="0.0" y="438.66666666666663" width="56" height="34.333333333333314"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" image="car" catalog="system"/>
+                                                <connections>
+                                                    <action selector="showRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K9W-ES-8lb"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -132,6 +140,7 @@
     <resources>
         <image name="amenity" width="32" height="32"/>
         <image name="attraction" width="32" height="32"/>
+        <image name="car" catalog="system" width="128" height="95"/>
         <image name="giftshop" width="32" height="32"/>
         <image name="performance" width="32" height="32"/>
         <image name="plus" catalog="system" width="128" height="113"/>
