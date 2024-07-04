@@ -217,6 +217,9 @@
                                                     <rect key="frame" x="300.33333333333331" y="45.333333333333329" width="72.666666666666686" height="34.333333333333329"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="길 안내"/>
+                                                    <connections>
+                                                        <action selector="startNavigation:" destination="i6X-Oi-PBZ" eventType="touchUpInside" id="aax-6u-bJ4"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -232,6 +235,7 @@
                                         <connections>
                                             <outlet property="containerStackView" destination="CAr-XG-vgz" id="EeK-2o-n9s"/>
                                             <outlet property="distanceLabel" destination="1WB-r2-HDT" id="6uH-bK-lNq"/>
+                                            <outlet property="navigationButton" destination="djD-M3-MrR" id="rjH-i3-7YA"/>
                                             <outlet property="timeLabel" destination="ZR1-h7-QaW" id="kC2-ke-uuN"/>
                                             <outlet property="tollStackView" destination="hTP-fA-gS1" id="kmR-ME-jia"/>
                                         </connections>

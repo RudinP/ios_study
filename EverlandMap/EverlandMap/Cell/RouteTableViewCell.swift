@@ -9,6 +9,7 @@ import UIKit
 
 class RouteTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var navigationButton: UIButton!
     @IBOutlet weak var containerStackView: UIStackView!
     
     @IBOutlet weak var distanceLabel: UILabel!

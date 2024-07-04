@@ -15,6 +15,19 @@ class RoutesViewController: UIViewController {
     var routes: Routes?
     var selectedIndex = 0
     
+    @IBAction func startNavigation(_ sender: UIButton) {
+        print(sender.tag)
+        guard let coordinate = routes?.dest?.location?.coordinate else {return}
+        
+        let placemark = MKPlacemark(coordinate: coordinate)
+        
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = routes?.dest?.name
+        
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+        // 지도앱으로 목적지를 전달
+    }
+    
     @IBAction func closeViewController(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -55,6 +68,8 @@ extension RoutesViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RouteTableViewCell.self), for: indexPath) as! RouteTableViewCell
+            
+            cell.navigationButton.tag = indexPath.section
             
             if let route = routes?.routes[indexPath.section]{
                 cell.timeLabel.text = route.expectedTravelTime.timeString
