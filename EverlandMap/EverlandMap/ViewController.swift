@@ -184,6 +184,14 @@ class ViewController: UIViewController {
         facilityButton.menu = menu
         facilityButton.showsMenuAsPrimaryAction = true
         
+        NotificationCenter.default.addObserver(forName: .routeDidSelect, object: nil, queue: .main) { [weak self] noti in
+            guard let self, let route = noti.userInfo?["route"] as? MKRoute else {return}
+            
+            self.mapView.removeOverlays(self.mapView.overlays)
+            self.mapView.addOverlay(route.polyline)
+            //맵 표시범위 바꾸기
+            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+        }
     }
 }
 
