@@ -78,27 +78,36 @@ class ViewController: UIViewController {
         request.requestsAlternateRoutes = true
         
         let directions = MKDirections(request: request)
-        directions.calculate { response, error in //응답 객체, 에러
-            guard let response else {
-                if let error {
-                    print(error)
-                }
-                return
+        //비동기 방식으로 경로 설정하기. 반드시 각 GeoCoder마다 다른 객체를 사용해주어야한다.
+        Task{
+            do{
+                async let calculateResponse = directions.calculate()
+                async let placemarkOfStart = CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: start.latitude, longitude: start.longitude), preferredLocale: Locale(identifier: "ko_kr"))
+                async let placemarksOfDest = CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: dest.latitude, longitude: dest.longitude), preferredLocale: Locale(identifier: "ko_kr"))
+                
+                //모든 결과가 반환될때까지 대기
+                let (routes, reverseGeocodedStart, reverseGeocodedDest) = try await (calculateResponse.routes, placemarkOfStart.first, placemarksOfDest.first)
+                
+                let route = routes[0] //routes는 배열로, 여러 경로가 나올 수 있기 때문.
+                mapView.addOverlay(route.polyline, level: .aboveRoads)
+                
+                let region = MKCoordinateRegion(route.polyline.boundingMapRect)
+                mapView.setRegion(region, animated: true)
+                
+                let result = Routes(start: reverseGeocodedStart, dest: reverseGeocodedDest, routes: routes)
+                performSegue(withIdentifier: "routeSegue", sender: result)
+
+            } catch {
+                print(error)
             }
-            
-            let route = response.routes[0] //routes는 배열로, 여러 경로가 나올 수 있기 때문.
-            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
-            
-            let region = MKCoordinateRegion(route.polyline.boundingMapRect)
-            self.mapView.setRegion(region, animated: true)
-            
-            self.performSegue(withIdentifier: "routeSegue", sender: response.routes)
         }
+        
+                           
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? RoutesViewController{
-            vc.routes = sender as? [MKRoute] ?? []
+            vc.routes = sender as? Routes
         }
     }
     

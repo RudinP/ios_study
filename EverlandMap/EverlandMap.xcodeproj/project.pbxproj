@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0A1B1D2C365E4E0029070C /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A1B1C2C365E4E0029070C /* Routes.swift */; };
+		4B0A1B202C3660AA0029070C /* TimeInterval+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A1B1F2C3660AA0029070C /* TimeInterval+Formatting.swift */; };
+		4B0A1B222C3661CE0029070C /* CLLocationDistance+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A1B212C3661CE0029070C /* CLLocationDistance+Formatting.swift */; };
 		4B4C3BD82C2D06DC00344E01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4C3BD72C2D06DC00344E01 /* AppDelegate.swift */; };
 		4B4C3BDA2C2D06DC00344E01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4C3BD92C2D06DC00344E01 /* SceneDelegate.swift */; };
 		4B4C3BDC2C2D06DC00344E01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4C3BDB2C2D06DC00344E01 /* ViewController.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B0A1B1C2C365E4E0029070C /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		4B0A1B1F2C3660AA0029070C /* TimeInterval+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Formatting.swift"; sourceTree = "<group>"; };
+		4B0A1B212C3661CE0029070C /* CLLocationDistance+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationDistance+Formatting.swift"; sourceTree = "<group>"; };
 		4B4C3BD42C2D06DC00344E01 /* EverlandMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EverlandMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4C3BD72C2D06DC00344E01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B4C3BD92C2D06DC00344E01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +55,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B0A1B1E2C36609D0029070C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4B0A1B1F2C3660AA0029070C /* TimeInterval+Formatting.swift */,
+				4B0A1B212C3661CE0029070C /* CLLocationDistance+Formatting.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4B4C3BCB2C2D06DC00344E01 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +83,7 @@
 		4B4C3BD62C2D06DC00344E01 /* EverlandMap */ = {
 			isa = PBXGroup;
 			children = (
+				4B0A1B1E2C36609D0029070C /* Extension */,
 				4B772F4E2C3532E200975B4C /* Cell */,
 				4B4C3BEE2C2D145300344E01 /* Model */,
 				4B4C3BEB2C2D072E00344E01 /* Location */,
@@ -98,6 +114,7 @@
 				4B4C3BEF2C2D146000344E01 /* Property.swift */,
 				4B4C3BF12C2D14B900344E01 /* Category.swift */,
 				4B4C3BF32C2D181E00344E01 /* EverlandAnnotation.swift */,
+				4B0A1B1C2C365E4E0029070C /* Routes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,8 +200,11 @@
 			files = (
 				4B4C3BDC2C2D06DC00344E01 /* ViewController.swift in Sources */,
 				4B4C3BF42C2D181E00344E01 /* EverlandAnnotation.swift in Sources */,
+				4B0A1B202C3660AA0029070C /* TimeInterval+Formatting.swift in Sources */,
 				4B4C3BF22C2D14B900344E01 /* Category.swift in Sources */,
 				4B4C3BD82C2D06DC00344E01 /* AppDelegate.swift in Sources */,
+				4B0A1B1D2C365E4E0029070C /* Routes.swift in Sources */,
+				4B0A1B222C3661CE0029070C /* CLLocationDistance+Formatting.swift in Sources */,
 				4B772F502C3532FD00975B4C /* RouteTableViewCell.swift in Sources */,
 				4B4C3BF02C2D146000344E01 /* Property.swift in Sources */,
 				4B772F522C35336500975B4C /* RoutesViewController.swift in Sources */,
