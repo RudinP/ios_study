@@ -11,18 +11,25 @@ class ImageListViewController: UIViewController {
     
     var ds = PhotoDataSource()
     
+    var isCancelled: Bool = false
+    
     @IBAction func cancelWorkItems(_ sender: Any) {
-        
+        isCancelled = true
     }
     
     @IBAction func startWorkItem(_ sender: Any) {
+        isCancelled = false
         downloadImages()
     }
     
     func downloadImages(){
+        guard !isCancelled else {return}
+        
         for photoData in ds.list {
             let workItem = DispatchWorkItem {
                 do{
+                    guard !self.isCancelled else {return}
+                    
                     let data = try Data(contentsOf: photoData.url)
                     
                     if let image = UIImage(data: data) {
@@ -30,8 +37,13 @@ class ImageListViewController: UIViewController {
                         UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
                         let frame = CGRect(origin: .zero, size: size)
                         image.draw(in: frame)
+                        
+                        guard !self.isCancelled else {return}
+                        
                         let resultImage = UIGraphicsGetImageFromCurrentImageContext()
                         UIGraphicsEndImageContext()
+                        
+                        guard !self.isCancelled else {return}
                         
                         photoData.data = resultImage
                     }
@@ -49,17 +61,22 @@ class ImageListViewController: UIViewController {
     }
     
     func reloadAll(){
+        guard !self.isCancelled else {return}
+        
         imageCollectionView.reloadData()
         applyFilter()
     }
     
     func applyFilter(){
+        guard !self.isCancelled else {return}
         let context = CIContext(options: nil)
         
         for photoData in ds.list{
             backgroundQueue.async {
                 guard let source = photoData.data?.cgImage else { fatalError() }
                 let ciImage = CIImage(cgImage: source)
+                
+                guard !self.isCancelled else {return}
                 
                 let filter = CIFilter(name: "CIPhotoEffectNoir")
                 filter?.setValue(ciImage, forKey: kCIInputImageKey)
@@ -68,11 +85,15 @@ class ImageListViewController: UIViewController {
                     fatalError()
                 }
                 
+                guard !self.isCancelled else {return}
+                
                 guard let cgImage = context.createCGImage(ciResult, from: ciResult.extent) else {
                     fatalError()
                 }
                 
                 photoData.data = UIImage(cgImage: cgImage)
+                
+                guard !self.isCancelled else {return}
                 
                 if let index = self.ds.list.firstIndex(where: {$0.url == photoData.url}){
                     let indexPath = IndexPath(item: index, section: 0)
